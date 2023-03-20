@@ -515,7 +515,7 @@ export default class extends Core {
     moveScrollBar(e) {
         if (this.isDraggingScrollbar) {
             requestAnimationFrame(() => {
-                if (this.instance.direction == 'horizontal') {
+                if (this.direction == 'horizontal') {
                     let x =
                         ((((e.clientX - this.scrollbarBCR.left) * 100) / this.scrollbarWidth) *
                             this.instance.limit.x) /
