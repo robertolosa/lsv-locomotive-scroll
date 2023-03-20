@@ -2539,7 +2539,7 @@ var _default$2 = /*#__PURE__*/function (_Core) {
 
       if (this.isDraggingScrollbar) {
         requestAnimationFrame(function () {
-          if (_this5.instance.direction == 'horizontal') {
+          if (_this5.direction == 'horizontal') {
             var x = (e.clientX - _this5.scrollbarBCR.left) * 100 / _this5.scrollbarWidth * _this5.instance.limit.x / 100;
 
             if (x > 0 && x < _this5.instance.limit.x) {
