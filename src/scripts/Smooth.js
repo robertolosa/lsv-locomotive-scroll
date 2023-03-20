@@ -515,20 +515,24 @@ export default class extends Core {
     moveScrollBar(e) {
         if (this.isDraggingScrollbar) {
             requestAnimationFrame(() => {
-                let x =
-                    ((((e.clientX - this.scrollbarBCR.left) * 100) / this.scrollbarWidth) *
-                        this.instance.limit.x) /
-                    100;
-                let y =
-                    ((((e.clientY - this.scrollbarBCR.top) * 100) / this.scrollbarHeight) *
-                        this.instance.limit.y) /
-                    100;
+                if (this.instance.direction == 'horizontal') {
+                    let x =
+                        ((((e.clientX - this.scrollbarBCR.left) * 100) / this.scrollbarWidth) *
+                            this.instance.limit.x) /
+                        100;
 
-                if (y > 0 && y < this.instance.limit.y) {
-                    this.instance.delta.y = y;
-                }
-                if (x > 0 && x < this.instance.limit.x) {
-                    this.instance.delta.x = x;
+                    if (x > 0 && x < this.instance.limit.x) {
+                        this.instance.delta.x = x;
+                    }
+                } else {
+                    let y =
+                        ((((e.clientY - this.scrollbarBCR.top) * 100) / this.scrollbarHeight) *
+                            this.instance.limit.y) /
+                        100;
+
+                    if (y > 0 && y < this.instance.limit.y) {
+                        this.instance.delta.y = y;
+                    }
                 }
             });
         }

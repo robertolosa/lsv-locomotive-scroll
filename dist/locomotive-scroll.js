@@ -1,4 +1,4 @@
-/* locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+/* locomotive-scroll v4.1.4 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -1283,7 +1283,7 @@
        *
        * @param  Available options :
        *          target {node, string, "top", "bottom", int} - The DOM element we want to scroll to
-       *          options {object} - Options object for additionnal settings.
+       *          options {object} - Options object for additional settings.
        * @return {void}
        */
 
@@ -2545,15 +2545,18 @@
 
         if (this.isDraggingScrollbar) {
           requestAnimationFrame(function () {
-            var x = (e.clientX - _this5.scrollbarBCR.left) * 100 / _this5.scrollbarWidth * _this5.instance.limit.x / 100;
-            var y = (e.clientY - _this5.scrollbarBCR.top) * 100 / _this5.scrollbarHeight * _this5.instance.limit.y / 100;
+            if (_this5.instance.direction == 'horizontal') {
+              var x = (e.clientX - _this5.scrollbarBCR.left) * 100 / _this5.scrollbarWidth * _this5.instance.limit.x / 100;
 
-            if (y > 0 && y < _this5.instance.limit.y) {
-              _this5.instance.delta.y = y;
-            }
+              if (x > 0 && x < _this5.instance.limit.x) {
+                _this5.instance.delta.x = x;
+              }
+            } else {
+              var y = (e.clientY - _this5.scrollbarBCR.top) * 100 / _this5.scrollbarHeight * _this5.instance.limit.y / 100;
 
-            if (x > 0 && x < _this5.instance.limit.x) {
-              _this5.instance.delta.x = x;
+              if (y > 0 && y < _this5.instance.limit.y) {
+                _this5.instance.delta.y = y;
+              }
             }
           });
         }
@@ -2868,7 +2871,7 @@
        *
        * @param  Available options :
        *          target {node, string, "top", "bottom", int} - The DOM element we want to scroll to
-       *          options {object} - Options object for additionnal settings.
+       *          options {object} - Options object for additional settings.
        * @return {void}
        */
 
